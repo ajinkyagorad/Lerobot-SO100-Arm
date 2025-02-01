@@ -7,11 +7,12 @@ This command initiates the training process using the `so100_real` environment a
 
 ```bash
 python lerobot/scripts/train.py \
-  dataset_repo_id=triton7777/so100_test_tape5 \
+  dataset_repo_id=user1234/project_xyz \
   env=so100_real \
   policy=act_so100_real \
   device=cuda \
   wandb.enable=false \
-  +dataset.root=/home/triton/.cache/huggingface/lerobot/triton7777/so100_test_tape5 \
+  +dataset.root=/home/username/.cache/huggingface/lerobot/user1234/project_xyz \
   +dataset.local_files_only=true \
   +dataset.meta._version="v2.0"
+```
