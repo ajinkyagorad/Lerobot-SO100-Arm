@@ -272,6 +272,7 @@ def record(
             device=cfg.device,
             use_amp=cfg.use_amp,
             fps=cfg.fps,
+            task=cfg.single_task,
         )
 
         # Execute a few seconds without recording to give time to manually reset the environment
@@ -290,7 +291,7 @@ def record(
             events["exit_early"] = False
             dataset.clear_episode_buffer()
             continue
-
+        #dataset.episode_buffer["single_task"] = cfg.single_task
         dataset.save_episode(cfg.single_task)
         recorded_episodes += 1
 
@@ -359,7 +360,7 @@ def control_robot(cfg: ControlPipelineConfig):
         replay(robot, cfg.control)
 
     if robot.is_connected:
-        # Disconnect manually to avoid a "Core dump" during process
+        # Disconnect manually to avoid cfg,                  # <-- NEWa "Core dump" during process
         # termination due to camera threads not properly exiting.
         robot.disconnect()
 

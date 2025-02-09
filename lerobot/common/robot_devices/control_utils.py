@@ -15,6 +15,7 @@ import torch
 import tqdm
 from deepdiff import DeepDiff
 from termcolor import colored
+import numpy as np
 
 from lerobot.common.datasets.image_writer import safe_stop_image_writer
 from lerobot.common.datasets.lerobot_dataset import LeRobotDataset
@@ -89,6 +90,8 @@ def is_headless():
 
 def predict_action(observation, policy, device, use_amp):
     observation = copy(observation)
+    print(f"DEBUG: Available keys in batch before policy: {observation.keys()}")  # Add this line
+
     with (
         torch.inference_mode(),
         torch.autocast(device_type=device.type) if device.type == "cuda" and use_amp else nullcontext(),
@@ -98,8 +101,11 @@ def predict_action(observation, policy, device, use_amp):
             if "image" in name:
                 observation[name] = observation[name].type(torch.float32) / 255
                 observation[name] = observation[name].permute(2, 0, 1).contiguous()
-            observation[name] = observation[name].unsqueeze(0)
-            observation[name] = observation[name].to(device)
+
+                # Only unsqueeze if it's a tensor
+            if isinstance(observation[name], torch.Tensor):
+                observation[name] = observation[name].unsqueeze(0)
+                observation[name] = observation[name].to(device)
 
         # Compute the next action with the policy
         # based on the current observation
@@ -183,6 +189,7 @@ def record_episode(
     device,
     use_amp,
     fps,
+    task,
 ):
     control_loop(
         robot=robot,
@@ -195,6 +202,7 @@ def record_episode(
         use_amp=use_amp,
         fps=fps,
         teleoperate=policy is None,
+        task=task,
     )
 
 
@@ -210,6 +218,7 @@ def control_loop(
     device: torch.device | str | None = None,
     use_amp: bool | None = None,
     fps: int | None = None,
+    task=None,
 ):
     # TODO(rcadene): Add option to record logs
     if not robot.is_connected:
@@ -241,6 +250,7 @@ def control_loop(
             observation = robot.capture_observation()
 
             if policy is not None:
+                observation["task"] = [task] # MOD for paligemma model
                 pred_action = predict_action(observation, policy, device, use_amp)
                 # Action can eventually be clipped using `max_relative_target`,
                 # so action actually sent is saved in the dataset.
@@ -249,12 +259,20 @@ def control_loop(
 
         if dataset is not None:
             frame = {**observation, **action}
+            if "task" in frame:
+                del frame["task"]  # Remove "task" before storing in dataset
             dataset.add_frame(frame)
 
+        #if display_cameras and not is_headless():
+        #    image_keys = [key for key in observation if "image" in key]
+        #    for key in image_keys:
+        #        cv2.imshow(key, cv2.cvtColor(observation[key].numpy(), cv2.COLOR_RGB2BGR))
+        #    cv2.waitKey(1)
         if display_cameras and not is_headless():
             image_keys = [key for key in observation if "image" in key]
-            for key in image_keys:
-                cv2.imshow(key, cv2.cvtColor(observation[key].numpy(), cv2.COLOR_RGB2BGR))
+            images = [cv2.cvtColor(observation[key].numpy(), cv2.COLOR_RGB2BGR) for key in image_keys]
+            stacked_images = np.hstack(images)
+            cv2.imshow("Stacked Cameras", stacked_images)
             cv2.waitKey(1)
 
         if fps is not None:
