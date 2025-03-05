@@ -1,0 +1,400 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="re-assemble">
+    <link name="Base_08q-v1">
+        <inertial>
+            <origin xyz="-4.044211014209581e-06 0.020995018451609077 0.016257398321927876" rpy="0.0 0.0 0.0" />
+            <mass value="0.9473651568999556" />
+            <inertia ixx="0.0008496739425766244" iyy="0.0010681065322811346" izz="0.0010112658131779446" ixy="1.6108041988577255e-07" iyz="0.00016843792093824102" ixz="3.459533900838331e-08" />
+        </inertial>
+        <visual name="Base_08q-v1_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Base_08q-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Base_08q-v1_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Base_08q-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="-0.0003009753018927546 9.099337304272638e-15 0.00012706404393911786" rpy="0.0 0.0 0.0" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="3.972529005645275e-05" iyy="7.348830383489989e-05" izz="6.1536839124182e-05" ixy="5.272499314913768e-17" iyz="-4.04892931937727e-17" ixz="-5.568984350147366e-07" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Motor1_holder-v1">
+        <inertial>
+            <origin xyz="-1.740564512860416e-09 0.05071242889376458 0.011738360359638064" rpy="0.0 0.0 0.0" />
+            <mass value="0.18685419312155607" />
+            <inertia ixx="0.0001435489939205101" iyy="0.0001831783085190978" izz="6.274647122750537e-05" ixy="3.642031505114336e-12" iyz="9.88910000646033e-06" ixz="-1.0555509631124378e-11" />
+        </inertial>
+        <visual name="Motor1_holder-v1_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Motor1_holder-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Motor1_holder-v1_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Motor1_holder-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Rotation_Pitch_08i-v1">
+        <inertial>
+            <origin xyz="-0.0002715749243512565 -0.03155590097004972 -0.007540448012893579" rpy="0.0 -0.0 0.0" />
+            <mass value="0.5385464072796393" />
+            <inertia ixx="0.0003749883571983444" iyy="0.00034052287032029457" izz="0.00015416093033728993" ixy="6.376311827585878e-07" iyz="3.600704193813722e-05" ixz="3.4881773737691312e-06" />
+        </inertial>
+        <visual name="Rotation_Pitch_08i-v1_visual">
+            <origin xyz="-9.588086185901776e-11 0.012000000386367235 -0.04639999999999972" rpy="1.5707963267949023 -2.0539125955564998e-15 1.5707963267948946" />
+            <geometry>
+                <mesh filename="meshes/Rotation_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Rotation_Pitch_08i-v1_collision">
+            <origin xyz="-9.588086185901776e-11 0.012000000386367235 -0.04639999999999972" rpy="1.5707963267949023 -2.0539125955564998e-15 1.5707963267948946" />
+            <geometry>
+                <mesh filename="meshes/Rotation_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="-0.0003009753018927507 9.104691524090777e-15 0.00012706404393911922" rpy="0.0 0.0 0.0" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="3.9725290056453035e-05" iyy="7.348830383490022e-05" izz="6.153683912418203e-05" ixy="5.273006150390871e-17" iyz="-4.052527990761954e-17" ixz="-5.568984350147387e-07" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="SO_ARM100_08k-v1">
+        <inertial>
+            <origin xyz="-0.03990811707343907 -0.03644421170369586 4.9822117531456286e-05" rpy="0.0 0.0 0.0" />
+            <mass value="0.1085306279896827" />
+            <inertia ixx="5.824313681198778e-05" iyy="4.5919741087324786e-05" izz="2.6819364359593842e-05" ixy="-5.2975841059930985e-08" iyz="-1.7477813575869574e-07" ixz="-1.9180971998414101e-07" />
+        </inertial>
+        <visual name="SO_ARM100_08k-v1_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="SO_ARM100_08k-v1_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="SO_ARM100_08k-1-v1">
+        <inertial>
+            <origin xyz="-0.018200477532403926 -0.05801458091595449 0.00036542864974272506" rpy="1.7516230804060213e-46 -8.758115402030109e-47 0.0" />
+            <mass value="0.990624876519019" />
+            <inertia ixx="0.0012506278350296013" iyy="0.0004775500264105839" izz="0.0016345413711929362" ixy="-8.156087507121505e-06" iyz="1.6631675801931364e-05" ixz="6.513081046790253e-07" />
+        </inertial>
+        <visual name="SO_ARM100_08k-1-v1_visual">
+            <origin xyz="-0.018200000849732785 -0.06508498709902007 0.012000000670230158" rpy="-1.5707963267948923 1.3386640727607728e-15 1.5707963267948988" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k-1-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="SO_ARM100_08k-1-v1_collision">
+            <origin xyz="-0.018200000849732785 -0.06508498709902007 0.012000000670230158" rpy="-1.5707963267948923 1.3386640727607728e-15 1.5707963267948988" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k-1-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="0.006874820486200939 0.007249498546828451 -0.024802183077943667" rpy="2.465190328815662e-32 -0.0 2.465190328815662e-32" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="5.1187963025332164e-05" iyy="7.34883038349009e-05" izz="5.007416615530249e-05" ixy="-6.603209099320556e-17" iyz="8.78250978994077e-18" ixz="1.0905774533864357e-05" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="0.007177490010253305 0.007249498546837545 -0.024925156907767365" rpy="3.141592653589792 0.785398163397453 -2.077836299970545e-15" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="0.007177490010253305 0.007249498546837545 -0.024925156907767365" rpy="3.141592653589792 0.785398163397453 -2.077836299970545e-15" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wrist_Roll_Pitch_08i-v1">
+        <inertial>
+            <origin xyz="-0.02139013737120118 0.026379785062156255 5.107689330731802e-05" rpy="6.842277657836022e-49 -0.0 -2.189528850507527e-47" />
+            <mass value="0.23921330884627623" />
+            <inertia ixx="0.0001152896900259879" iyy="0.00012628158400286148" izz="0.00019975225767063432" ixy="6.716003767862372e-06" iyz="3.2234619880473244e-07" ixz="-4.165029726871989e-08" />
+        </inertial>
+        <visual name="Wrist_Roll_Pitch_08i-v1_visual">
+            <origin xyz="-0.018099995613472274 0.027999998546837573 6.702302357552981e-10" rpy="-1.5707963267948957 -4.4964032497319416e-15 -3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wrist_Roll_Pitch_08i-v1_collision">
+            <origin xyz="-0.018099995613472274 0.027999998546837573 6.702302357552981e-10" rpy="-1.5707963267948957 -4.4964032497319416e-15 -3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="0.02000097088064605 0.008857969507927149 0.0038375122859441203" rpy="0.0 -0.0 -1.0339757656912846e-25" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="3.972529005496493e-05" iyy="6.751257148106324e-05" izz="6.751257147949868e-05" ixy="3.9378660751673976e-07" iyz="-5.975732354619456e-06" ixz="3.937866710522308e-07" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="0.019699995578922564 0.008768121660252213 0.0037476644388233548" rpy="0.7853981633974475 6.203854594147702e-25 -3.1415926517057815" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="0.019699995578922564 0.008768121660252213 0.0037476644388233548" rpy="0.7853981633974475 6.203854594147702e-25 -3.1415926517057815" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="SO_ARM100_08k_elbow_rotate-v1">
+        <inertial>
+            <origin xyz="-0.0008496977506029216 -0.02933282507755635 0.0006808319330679603" rpy="0.0 -0.0 1.1013758449073115e-75" />
+            <mass value="0.40041047035082356" />
+            <inertia ixx="0.00013645768635177705" iyy="0.000152498740130496" izz="0.0002142269887596328" ixy="1.4061304037283497e-06" iyz="5.3268257092267375e-06" ixz="-4.873828511175524e-07" />
+        </inertial>
+        <visual name="SO_ARM100_08k_elbow_rotate-v1_visual">
+            <origin xyz="0.0002601391170150254 -0.0026673145200785454 -0.02993312163815155" rpy="-1.570796327461147 -0.01975440869285234 1.5707963274741565" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k_elbow_rotate-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="SO_ARM100_08k_elbow_rotate-v1_collision">
+            <origin xyz="0.0002601391170150254 -0.0026673145200785454 -0.02993312163815155" rpy="-1.570796327461147 -0.01975440869285234 1.5707963274741565" />
+            <geometry>
+                <mesh filename="meshes/SO_ARM100_08k_elbow_rotate-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="-0.0160599472028154 -0.016366453670796203 -0.0014763006403726386" rpy="1.5014063976480072e-19 -0.0 1.341156281810177e-18" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="6.749731785465741e-05" iyy="3.975579729036412e-05" izz="6.749731787051228e-05" ixy="6.980742100615504e-07" iyz="-6.980742096840129e-07" ixz="5.990985972315439e-06" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="-0.016145573626637617 -0.01666988016060341 -0.0013906742166572706" rpy="-2.3560969240152883 0.01396802206304704 -1.5568269419124787" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="-0.016145573626637617 -0.01666988016060341 -0.0013906742166572706" rpy="-2.3560969240152883 0.01396802206304704 -1.5568269419124787" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wrist_Roll_Pitch_08i-v1">
+        <inertial>
+            <origin xyz="0.0032901417577289103 -5.107622307706603e-05 0.001620213484681319" rpy="0.0 0.0 0.0" />
+            <mass value="0.23921330884627623" />
+            <inertia ixx="0.00011528969002598814" iyy="0.00019975225767063497" izz="0.0001262815840028616" ixy="-4.1650297269093445e-08" iyz="3.223461988046944e-07" ixz="6.7160037678623816e-06" />
+        </inertial>
+        <visual name="Wrist_Roll_Pitch_08i-v1_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wrist_Roll_Pitch_08i-v1_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="-0.0003009753018927568 9.1125904659946e-15 0.00012706404393911792" rpy="0.0 0.0 0.0" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="3.972529005645137e-05" iyy="7.348830383489984e-05" izz="6.153683912418127e-05" ixy="5.2520690793047575e-17" iyz="-4.1035304880980794e-17" ixz="-5.568984350147588e-07" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wrist_Roll_Pitch_08i-v1">
+        <inertial>
+            <origin xyz="-0.021390145780749444 0.02637978412370367 5.107645897334479e-05" rpy="0.0 -0.0 6.580122369801113e-92" />
+            <mass value="0.23921330884627623" />
+            <inertia ixx="0.00011528969002593155" iyy="0.00012628158400286062" izz="0.00019975225767068956" ixy="6.716003768077086e-06" iyz="3.223461943302301e-07" ixz="-4.165024100682643e-08" />
+        </inertial>
+        <visual name="Wrist_Roll_Pitch_08i-v1_visual">
+            <origin xyz="-0.018100004023054565 0.027999997608384987 2.337046467459913e-10" rpy="-1.5707963267948957 -6.661205069986704e-10 -3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wrist_Roll_Pitch_08i-v1_collision">
+            <origin xyz="-0.018100004023054565 0.027999997608384987 2.337046467459913e-10" rpy="-1.5707963267948957 -6.661205069986704e-10 -3.141592653589793" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_Pitch_08i-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Wrist_Roll_08c-v1-v2_Component1">
+        <inertial>
+            <origin xyz="-0.012892330964958464 -0.0013240658146580569 0.019280963636584107" rpy="0.0 0.0 0.0" />
+            <mass value="0.23136285040703947" />
+            <inertia ixx="8.21860857341352e-05" iyy="8.451450873010426e-05" izz="0.00011752576506250992" ixy="4.369128477504123e-06" iyz="1.571670220502388e-06" ixz="1.4345178888616808e-05" />
+        </inertial>
+        <visual name="Wrist_Roll_08c-v1-v2_Component1_visual">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_08c-v1-v2_Component1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Wrist_Roll_08c-v1-v2_Component1_collision">
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+            <geometry>
+                <mesh filename="meshes/Wrist_Roll_08c-v1-v2_Component1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="STS3215_03a-v2">
+        <inertial>
+            <origin xyz="-0.0038375103444567007 -0.022399020812220737 -8.98497001366394e-05" rpy="6.121265807363892e-43 -0.0 0.0" />
+            <mass value="0.28430342154966426" />
+            <inertia ixx="6.751257148024132e-05" iyy="3.9725290055338326e-05" izz="6.75125714799533e-05" ixy="-3.9378663643264787e-07" iyz="-3.9378665240964156e-07" ixz="-5.9757323548027065e-06" />
+        </inertial>
+        <visual name="STS3215_03a-v2_visual">
+            <origin xyz="-0.0037476624970523933 -0.02269999611398654 -1.8528869460965325e-09" rpy="2.3561944901923435 -4.710038171428755e-10 -1.5707963258528892" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="STS3215_03a-v2_collision">
+            <origin xyz="-0.0037476624970523933 -0.02269999611398654 -1.8528869460965325e-09" rpy="2.3561944901923435 -4.710038171428755e-10 -1.5707963258528892" />
+            <geometry>
+                <mesh filename="meshes/STS3215_03a-v2.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="Moving_Jaw_08d-v1-v1">
+        <inertial>
+            <origin xyz="-0.0016198474761601567 -0.03039581727709562 0.019284350053069128" rpy="0.0 -0.0 2.0391576462495394e-56" />
+            <mass value="0.1586832108582172" />
+            <inertia ixx="8.673041427139164e-05" iyy="2.370274878330316e-05" izz="7.037283078368224e-05" ixy="-4.190090150492917e-06" iyz="-1.5104418536367177e-06" ixz="-8.253200963392794e-08" />
+        </inertial>
+        <visual name="Moving_Jaw_08d-v1-v1_visual">
+            <origin xyz="-3.8673293500934846e-09 3.749087831295128e-09 0.018900001137036194" rpy="-5.29740585951088e-16 -1.2490008985673973e-16 3.330498941018795e-10" />
+            <geometry>
+                <mesh filename="meshes/Moving_Jaw_08d-v1-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision name="Moving_Jaw_08d-v1-v1_collision">
+            <origin xyz="-3.8673293500934846e-09 3.749087831295128e-09 0.018900001137036194" rpy="-5.29740585951088e-16 -1.2490008985673973e-16 3.330498941018795e-10" />
+            <geometry>
+                <mesh filename="meshes/Moving_Jaw_08d-v1-v1.stl" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="STS3215_03a-v2_Rigid-2" type="fixed">
+        <origin xyz="0.012500000386367267 9.58806177834247e-11 0.018700000000000036" rpy="0.0 -0.0 1.5707963267948983" />
+        <parent link="STS3215_03a-v2" />
+        <child link="Rotation_Pitch_08i-v1" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-4" type="fixed">
+        <origin xyz="0.012500000670229916 2.018861118280313e-09 -0.017700000849732955" rpy="-3.141592653589792 1.570796326794891 0" />
+        <parent link="STS3215_03a-v2" />
+        <child link="SO_ARM100_08k-1-v1" />
+    </joint>
+    <joint name="SO_ARM100_08k-1-v1_Rigid-5" type="fixed">
+        <origin xyz="-0.004712700000000003 -0.12015728000000002 0.007200000000000007" rpy="4.278299853230853e-16 0.7853981633974477 2.608881203934407e-16" />
+        <parent link="SO_ARM100_08k-1-v1" />
+        <child link="STS3215_03a-v2" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-7" type="fixed">
+        <origin xyz="0.028532112174267807 0.007249499999999989 -0.02124820522126518" rpy="-3.0252148381689626e-16 -0.7853981633974483 1.2385845582379673e-46" />
+        <parent link="STS3215_03a-v2" />
+        <child link="Wrist_Roll_Pitch_08i-v1" />
+    </joint>
+    <joint name="Wrist_Roll_Pitch_08i-v1_Rigid-8" type="fixed">
+        <origin xyz="-0.0108 0.03231723000000001 -0.004682769999999987" rpy="2.3561944901923457 6.660976308101158e-10 -3.1415926529236957" />
+        <parent link="Wrist_Roll_Pitch_08i-v1" />
+        <child link="STS3215_03a-v2" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-9" type="fixed">
+        <origin xyz="0.007199999979284369 0.021991020901684078 0.016970562748477133" rpy="-0.7853981633974482 5.455740642892004e-26 -3.141592652647789" />
+        <parent link="STS3215_03a-v2" />
+        <child link="SO_ARM100_08k_elbow_rotate-v1" />
+    </joint>
+    <joint name="SO_ARM100_08k_elbow_rotate-v1_Rigid-12" type="fixed">
+        <origin xyz="-0.010255080000000001 -0.04415426 -0.007413869999999996" rpy="-3.1415926535897927 0.7853981633974477 -3.12183824489694" />
+        <parent link="SO_ARM100_08k_elbow_rotate-v1" />
+        <child link="STS3215_03a-v2" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-15" type="fixed">
+        <origin xyz="-0.028484330050561814 -0.029517074024459196 0.010948081877135411" rpy="-0.019750555373295064 -0.7852030704405507 -3.1136593337733354" />
+        <parent link="STS3215_03a-v2" />
+        <child link="Wrist_Roll_Pitch_08i-v1" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-16" type="fixed">
+        <origin xyz="0.01250000388652138 -1.1118575748980675e-09 0.01870000373736433" rpy="-1.5707963267948957 -6.66099817779402e-10 -6.660999565572904e-10" />
+        <parent link="STS3215_03a-v2" />
+        <child link="Wrist_Roll_08c-v1-v2" />
+    </joint>
+    <joint name="Wrist_Roll_08c-v1-v2_Rigid-17" type="fixed">
+        <origin xyz="-0.015 -0.022387499999999998 0.004537499999999995" rpy="1.7882708017873474e-25 -0.7853981633974491 1.5707963267948966" />
+        <parent link="Wrist_Roll_08c-v1-v2" />
+        <child link="STS3215_03a-v2" />
+    </joint>
+    <joint name="STS3215_03a-v2_Rigid-19" type="fixed">
+        <origin xyz="-0.01697056274847713 -0.03519999999999997 -0.01322289680818841" rpy="-0.7853981633974491 -2.1641337497648953e-25 -1.5707963267948966" />
+        <parent link="STS3215_03a-v2" />
+        <child link="Moving_Jaw_08d-v1-v1" />
+    </joint>
+</robot>
