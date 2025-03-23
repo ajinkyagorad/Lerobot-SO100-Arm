@@ -139,6 +139,8 @@ wandb login
 └── tests                 # contains pytest utilities for continuous integration
 ```
 
+
+
 ### Visualize datasets
 
 Check out [example 1](./examples/1_load_lerobot_dataset.py) that illustrates how to use our dataset class which automatically downloads data from the Hugging Face hub.
@@ -322,6 +324,87 @@ with profile(
             # insert code to profile, potentially whole body of eval_policy function
 ```
 
+
+## USB Device Setup (udev rules)
+
+### Robot Arm Port Assignments
+
+The robot system uses four USB-Serial devices that need to be properly identified and assigned. We use udev rules to create persistent device names for each robot arm component:
+
+- Right Follower: `/dev/tty_right_follower` (ttyACM0)
+- Left Follower: `/dev/tty_left_follower` (ttyACM1)
+- Left Leader: `/dev/tty_left_leader` (ttyACM2)
+- Right Leader: `/dev/tty_right_leader` (ttyACM3)
+
+### Setting up udev Rules
+
+1. Create a new udev rules file:
+```bash
+sudo nano /etc/udev/rules.d/99_sox267.rules
+```
+
+2. Add the following rules:
+```bash
+# Assign persistent names and set permissions for SOX267 robot arms
+
+# Right Follower (ttyACM0)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", ATTRS{serial}=="58FA092389", SYMLINK+="tty_right_follower", MODE="0666", GROUP="dialout"
+
+# Left Follower (ttyACM1)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", ATTRS{serial}=="58FA082123", SYMLINK+="tty_left_follower", MODE="0666", GROUP="dialout"
+
+# Left Leader (ttyACM2)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", ATTRS{serial}=="58FA091865", SYMLINK+="tty_left_leader", MODE="0666", GROUP="dialout"
+
+# Right Leader (ttyACM3)
+SUBSYSTEM=="tty", ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", ATTRS{serial}=="58FA093283", SYMLINK+="tty_right_leader", MODE="0666", GROUP="dialout"
+```
+
+3. Apply the rules:
+```bash
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+### Verifying the Setup
+
+To verify that the rules are properly applied:
+
+1. Check the symbolic links:
+```bash
+ls -l /dev/tty_*
+```
+
+2. Verify device permissions:
+```bash
+ls -l /dev/ttyACM*
+```
+
+### Troubleshooting
+
+If devices are not properly recognized:
+
+1. Check if the device is connected:
+```bash
+lsusb | grep "1a86"
+```
+
+2. View detailed device information:
+```bash
+udevadm info -a -n /dev/ttyACM0  # Replace with relevant device
+```
+
+3. Find a specific device's serial number:
+```bash
+python lerobot/scripts/find_motors_bus_port.py
+```
+
+### Note
+
+- The serial numbers in the rules file are unique to each device
+- All devices should have read/write permissions (MODE="0666")
+- Users need to be in the 'dialout' group to access the devices
+- If you replace any hardware, you'll need to update the corresponding serial number in the rules file
+
 ## Citation
 
 If you want, you can cite this work with:
@@ -374,4 +457,6 @@ Additionally, if you are using any of the particular policy architecture, pretra
   journal={arXiv preprint arXiv:2403.03181},
   year={2024}
 }
-```
+
+
+
