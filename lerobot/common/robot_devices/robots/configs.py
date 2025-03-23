@@ -429,7 +429,7 @@ class So100RobotConfig(ManipulatorRobotConfig):
     leader_arms: dict[str, MotorsBusConfig] = field(
         default_factory=lambda: {
             "main": FeetechMotorsBusConfig(
-                port="/dev/ttyACM0",
+                port="/dev/tty_left_leader",
                 motors={
                     # name: (index, model)
                     "shoulder_pan": [1, "sts3215"],
@@ -446,7 +446,7 @@ class So100RobotConfig(ManipulatorRobotConfig):
     follower_arms: dict[str, MotorsBusConfig] = field(
         default_factory=lambda: {
             "main": FeetechMotorsBusConfig(
-                port="/dev/ttyACM1",
+                port="/dev/tty_left_follower",
                 motors={
                     # name: (index, model)
                     "shoulder_pan": [1, "sts3215"],
@@ -459,17 +459,29 @@ class So100RobotConfig(ManipulatorRobotConfig):
             ),
         }
     )
-
+    # note: following camera setup is also written to dataset
     cameras: dict[str, CameraConfig] = field(
         default_factory=lambda: {
-            "laptop": OpenCVCameraConfig(
+            "s_left": OpenCVCameraConfig(
+                camera_index=3,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "s_right": OpenCVCameraConfig(
+                camera_index=2,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "gripper": OpenCVCameraConfig(
                 camera_index=1,
                 fps=30,
                 width=640,
                 height=360,
             ),
-            "phone": OpenCVCameraConfig(
-                camera_index=3,
+            "top": OpenCVCameraConfig(
+                camera_index=0,
                 fps=30,
                 width=640,
                 height=360,
@@ -477,6 +489,179 @@ class So100RobotConfig(ManipulatorRobotConfig):
         }
     )
 
+    mock: bool = False
+
+
+
+@RobotConfig.register_subclass("so107")
+@dataclass
+class So107RobotConfig(ManipulatorRobotConfig):
+    calibration_dir: str = ".cache/calibration/so107"
+    # `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.
+    # Set this to a positive scalar to have the same value for all motors, or a list that is the same length as
+    # the number of motors in your follower arms.
+    max_relative_target: int | None = None
+
+    leader_arms: dict[str, MotorsBusConfig] = field(
+        default_factory=lambda: {
+            "main": FeetechMotorsBusConfig(
+                port="/dev/tty_right_leader",
+                motors={
+                    # name: (index, model)
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "forearm_roll": [4, "sts3215"],
+                    "wrist_flex": [5, "sts3215"],
+                    "wrist_roll": [6, "sts3215"],
+                    "gripper": [7, "sts3215"],
+                },
+            ),
+        }
+    )
+
+    follower_arms: dict[str, MotorsBusConfig] = field(
+        default_factory=lambda: {
+            "main": FeetechMotorsBusConfig(
+                port="/dev/tty_right_follower",
+                motors={
+                    # name: (index, model)
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "forearm_roll": [4, "sts3215"],
+                    "wrist_flex": [5, "sts3215"],
+                    "wrist_roll": [6, "sts3215"],
+                    "gripper": [7, "sts3215"],
+                },
+            ),
+        }
+    )
+    # note: following camera setup is also written to dataset
+    cameras: dict[str, CameraConfig] = field(
+        default_factory=lambda: {
+            "s_left": OpenCVCameraConfig(
+                camera_index=0,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "s_right": OpenCVCameraConfig(
+                camera_index=3,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "gripper": OpenCVCameraConfig(
+                camera_index=2,
+                fps=30,
+                width=640,
+                height=360,
+            ),
+            "top": OpenCVCameraConfig(
+                camera_index=5,
+                fps=30,
+                width=640,
+                height=360,
+            ),
+        }
+    )
+
+    mock: bool = False
+@RobotConfig.register_subclass("sox267")
+@dataclass
+class SOX267RobotConfig(ManipulatorRobotConfig):
+    calibration_dir: str = ".cache/calibration/sox267"
+    
+    # `max_relative_target` limits the magnitude of the relative positional target vector for safety purposes.
+    max_relative_target: int | None = None
+    
+    leader_arms: dict[str, MotorsBusConfig] = field(
+        default_factory=lambda: {
+            "left": FeetechMotorsBusConfig(
+                port="/dev/tty_left_leader",
+                motors={
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "wrist_flex": [4, "sts3215"],
+                    "wrist_roll": [5, "sts3215"],
+                    "gripper": [6, "sts3215"],
+                },
+            ),
+            "right": FeetechMotorsBusConfig(
+                port="/dev/tty_right_leader",
+                motors={
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "forearm_roll": [4, "sts3215"],
+                    "wrist_flex": [5, "sts3215"],
+                    "wrist_roll": [6, "sts3215"],
+                    "gripper": [7, "sts3215"],
+                },
+            ),
+        }
+    )
+    
+    follower_arms: dict[str, MotorsBusConfig] = field(
+        default_factory=lambda: {
+            "left": FeetechMotorsBusConfig(
+                port="/dev/tty_left_follower",
+                motors={
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "wrist_flex": [4, "sts3215"],
+                    "wrist_roll": [5, "sts3215"],
+                    "gripper": [6, "sts3215"],
+                },
+            ),
+            "right": FeetechMotorsBusConfig(
+                port="/dev/tty_right_follower",
+                motors={
+                    "shoulder_pan": [1, "sts3215"],
+                    "shoulder_lift": [2, "sts3215"],
+                    "elbow_flex": [3, "sts3215"],
+                    "forearm_roll": [4, "sts3215"],
+                    "wrist_flex": [5, "sts3215"],
+                    "wrist_roll": [6, "sts3215"],
+                    "gripper": [7, "sts3215"],
+                },
+            ),
+        }
+    )
+    
+    # Camera configurations for visual tracking and control
+    cameras: dict[str, CameraConfig] = field(
+        default_factory=lambda: {
+            "s_left": OpenCVCameraConfig(
+                camera_index=0,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "s_right": OpenCVCameraConfig(
+                camera_index=7,
+                fps=30,
+                width=640,
+                height=480,
+            ),
+            "gripper": OpenCVCameraConfig(
+                camera_index=2,
+                fps=30,
+                width=640,
+                height=360,
+            ),
+            "top": OpenCVCameraConfig(
+                camera_index=5,
+                fps=30,
+                width=640,
+                height=360,
+            ),
+        }
+    )
+    
     mock: bool = False
 
 
