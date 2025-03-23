@@ -1,27 +1,49 @@
+#!/usr/bin/env python3
+"""
+Reads Feetech motor angles continuously from the specified port and motor IDs.
+
+Usage:
+    python read_angles.py --port /dev/tty_left_follower --motors 1 2 3 4 5 6 7
+
+Arguments:
+    --port     : Serial port to which the motor bus is connected (e.g., /dev/tty_left_follower)
+    --motors   : List of motor IDs to monitor
+
+Example:
+    python read_angles.py --port /dev/tty_left_follower --motors 1 2 3
+"""
+
 import time
+import argparse
 from lerobot.common.robot_devices.motors.feetech import FeetechMotorsBus
 
-# Define port and model
-PORT = "COM10"  # Update this to your actual port
-MODEL = "sts3215"
+def main():
+    parser = argparse.ArgumentParser(description="Read motor angles over Feetech bus.")
+    parser.add_argument("--port", required=True, help="Serial port (e.g., /dev/tty_left_follower or COM12)")
+    parser.add_argument("--motors", type=int, nargs="+", required=True, help="List of motor IDs (e.g., 1 2 3 4 5)")
 
-# Define motor IDs and names
-motor_ids = list(range(1, 8))  # IDs 1 to 7
-motor_names = [f"motor_{i}" for i in motor_ids]
-motors = {name: (idx, MODEL) for name, idx in zip(motor_names, motor_ids)}
+    args = parser.parse_args()
+    port = args.port
+    motor_ids = args.motors
+    MODEL = "sts3215"
 
-# Initialize and connect motor bus
-bus = FeetechMotorsBus(port=PORT, motors=motors)
-bus.connect()
-bus.set_bus_baudrate(1_000_000)
+    motor_names = [f"motor_{i}" for i in motor_ids]
+    motors = {name: (idx, MODEL) for name, idx in zip(motor_names, motor_ids)}
 
-try:
-    while True:
-        positions = bus.read("Present_Position", motor_names)
-        print("Raw Motor Positions (steps):", positions)
-        time.sleep(0.01)
+    bus = FeetechMotorsBus(port=port, motors=motors)
+    bus.connect()
+    bus.set_bus_baudrate(1_000_000)
 
-except KeyboardInterrupt:
-    print("Stopped reading motor positions.")
-finally:
-    bus.disconnect()
+    try:
+        while True:
+            angles = bus.read("Present_Angle", motor_names)
+            print("Motor Angles (degrees):", angles)
+            time.sleep(0.05)
+
+    except KeyboardInterrupt:
+        print("Stopped reading motor angles.")
+    finally:
+        bus.disconnect()
+
+if __name__ == "__main__":
+    main()
