@@ -7,6 +7,13 @@ Usage:
 
 Each --group argument should be a tuple-like string:
     "(port, motor_id1, motor_id2, ...)"
+
+    python lerobot/scripts/read_motor_angles.py \
+  --group "('/dev/tty_left_follower', 1,2,3,4,5,6)" \
+  --group "('/dev/tty_left_leader', 1,2,3,4,5,6)" \
+  --group "('/dev/tty_right_follower', 1,2,3,4,5,6,7)" \
+  --group "('/dev/tty_right_leader', 1,2,3,4,5,6,7)"
+
 """
 
 import argparse
